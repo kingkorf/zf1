@@ -460,8 +460,8 @@ class Zend_Session extends Zend_Session_Abstract
         // See http://www.php.net/manual/en/ref.session.php for explanation
         if (!self::$_unitTestEnabled && defined('SID')) {
             /** @see Zend_Session_Exception */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('session has already been started by session.auto-start or session_start()');
+            /*require_once 'Zend/Session/Exception.php';
+            throw new Zend_Session_Exception('session has already been started by session.auto-start or session_start()');*/
         }
 
         /**
@@ -479,7 +479,7 @@ class Zend_Session extends Zend_Session_Abstract
                 set_error_handler(array('Zend_Session_Exception', 'handleSessionStartError'), $errorLevel);
             }
 
-            $startedCleanly = session_start();
+            $startedCleanly = @session_start();
 
             if (self::$_throwStartupExceptions) {
                 restore_error_handler();
