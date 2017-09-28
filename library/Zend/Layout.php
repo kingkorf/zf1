@@ -358,6 +358,8 @@ class Zend_Layout
      */
     public function disableLayout()
     {
+        $_REQUEST['sf_use_layout'] = false;
+
         $this->_enabled = false;
         return $this;
     }
